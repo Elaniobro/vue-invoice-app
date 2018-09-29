@@ -1,0 +1,203 @@
+.invoice {
+    &--container {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    &--header {
+        &__container{
+            padding: 1rem;
+            background: #001050;
+            color: #fff;
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+        }
+
+        &__title {
+            display: inline;
+            margin: 0;
+            grid-column-start: 10;
+        }
+        &__link{
+            display: inline-block;
+            vertical-align: text-bottom;
+        }
+        &__logo{}
+    }
+    &--customer__container{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        margin: 3rem 0;
+    }
+    &--customer-address {
+        &__container {
+            display: inline-block;
+            grid-column-start: 3;
+        }
+        &__info {
+            height: 100px;
+            padding: 1rem;
+        }
+    }
+    &--customer-info {
+        &__container {
+            display: inline-block;
+        }
+        &__title {
+        height: 65px;
+        padding: 1rem;
+        border: none;
+        }
+    }
+
+    &--meta {
+        &__container {
+            display: inline-block;
+            max-width: 300px;
+        }
+        &__head {
+            display: grid;
+            grid-template-columns: repeat(2,auto);
+            grid-template-rows: repeat(3);
+            grid-gap: 10px;
+
+            &-id,
+            &-date,
+            &-balance {
+                padding: 0 1rem;
+                height: 25px;
+                background: #0072f0;
+                color: #fff;
+            }
+        }
+        &__id {}
+        &__date {
+            & input {
+                width: 100%;
+            }
+        }
+
+        &__balance {}
+
+        &__id,
+        &__date,
+        &__balance {
+            height: 25px;
+        }
+    }
+
+    &--line-items {
+        &__container {
+
+        }
+        &__container:before {
+
+            position: absolute; z-index: -1;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+        &__nav {
+            display: grid;
+            grid-template-columns: 150px auto 100px 100px 100px;
+            grid-gap: 1rem;
+            border-bottom: 1px solid #001050;
+            border-right: 1px solid #001050;
+            border-left: 1px solid #001050;
+            border-top: 1px solid #001050;
+        }
+
+        &__nav-item {
+            padding: 1rem 0;
+        }
+    }
+
+    &--nav__item{
+        padding-left: 1rem;
+    }
+
+    &--total__container {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-rows: repeat(3,auto);
+        padding: 1rem 0;
+        border-right: 1px solid #001050;
+        border-left: 1px solid #001050;
+        border-bottom: 1px solid #001050;
+
+       & div {
+            grid-column-start: 2;
+
+            & textarea {
+                height: 17px;
+            }
+        }
+    }
+}
+
+.line {
+    &--item {
+        &__container {
+            display: grid;
+            grid-gap: 1rem;
+            grid-template-columns: 150px auto 100px 100px 100px;
+            padding: 1rem 0;
+            border-right: 1px solid #001050;
+            border-left: 1px solid #001050;
+            border-bottom: 1px solid aliceblue;
+
+            & div {
+                padding-right: 1rem;
+                position: relative;
+            }
+        }
+        &__item,
+        &__add {
+            padding-left: 1rem;
+        }
+        &__add {
+            border: 1px solid #001050;
+        }
+        & textarea {
+            width: 100%;
+        }
+        &-text {
+            &__unit-cost,
+            &__item,
+            &__desc,
+            &__qty,
+            &__price {
+                width: 100%
+            }
+        }
+    }
+}
+
+.btn--delete {
+    position: absolute;
+    top: -10px;
+    left: -25px;
+    border-radius: 5px 0 0px 5px;
+    background: #FFF;
+    border: 1px solid #ccc;
+    color: #f00;
+}
+
+.btn--delete:hover {
+    background: #f00;
+    color: #fff;
+}
+textarea {
+    resize: none;
+    border: none;
+}
+
+textarea:focus {
+    border: 1px solid #0072f0;
+    box-shadow: 0 0 10px #0072f0;
+}
+
+footer {
+    text-align: center;
+}

@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+    <title>LeafLink Invoice App</title>
+    <link rel='stylesheet' type='text/css' href='style.css' />
+    <!-- TODO: Add in print specif styles        <link rel='stylesheet' type='text/css' href='./css/print.css' media="print" /> -->
+    <link rel='stylesheet' type='text/css' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' />
+</head>
+<!-- Hide potential flicker -->
+<style> [v-cloak] {display: none; } </style>
+
+<body >
+    <section id="invoice--container" class="invoice--container" v-cloak>
+        <header class="invoice--header__container">
+            <a class="invoice--header__link" href="https://www.leaflink.com" target="_blank">
+            <img class="invoice--header__logo" src="https://leaflink.com/static/wpd/images/ll-logo.png" alt="LeafLink" height="30"/>
+            </a>
+            <h1 class="invoice--header__title">Invoice</h1>
+        </header>
+
+        <div class="invoice--customer__container">
+            <section class="invoice--meta__container">
+                <header class="invoice--meta__head">
+                    <span class="invoice--meta__head-id">Invoice ID:</span>
+                    <textarea class="invoice--meta__id" placeholder="LL-000001"></textarea>
+                    <span class="invoice--meta__head-date">Date:</span>
+                    <datepicker class="invoice--meta__date" placeholder="DD Mon. YYYY">
+                    </datepicker>
+                    <span class="invoice--meta__head-balance">Balance:</span>
+                    <div class="invoice--meta__balance">{{balance__due}}</div>
+                </header>
+            </section>
+
+            <section class="invoice--customer-address__container">
+                <div class="invoice--customer-address__container">
+                    <textarea class="invoice--customer-address__info" id="address" placeholder="Acme Corp\n1400 Broadway\nSuite 500\nNY,NY 10011"></textarea>
+                </div>
+            </section>
+        </div>
+
+        <section class="invoice--line-items__container">
+            <nav class="invoice--line-items__nav">
+                <span class="invoice--line-items__nav-item invoice--nav__item">Item</span>
+                <span class="invoice--line-items__nav-item invoice--nav__desc">Description</span>
+                <span class="invoice--line-items__nav-item invoice--nav__unit-cost">Unit Cost</span>
+                <span class="invoice--line-items__nav-item invoice--nav__qty">Quantity</span>
+                <span class="invoice--line-items__nav-item invoice--nav__price">Price</span>
+            </nav>
+
+            <article class="line--item__container" v-for="(item, index) in items">
+                <div class="line--item__item">
+                    <textarea class="line--item-text__item">{{item.item}}</textarea>
+                    <button v-if="seen" class="btn--delete" v-on:click="delete_a_row(index)" title="Delte Row">X</button>
+                </div>
+                <div class="line--item__desc">
+                    <textarea class="line--item-text__desc">{{ item.desc }}</textarea>
+                </div>
+                <div class="line--item__unit-cost">
+                    <textarea  class="line--item-text__unit-cost" v-model="item.unit_cost">{{ item.unit_cost }}</textarea></div>
+                <div class="line--item__qty">
+                    <textarea  class="line--item-text__qty" v-model="item.qty">{{ item.qty }} </textarea></div>
+                <div class="line--item__price">
+                    <span class="line--item__price">{{ line_total(item.unit_cost , item.qty) }}</span>
+                </div>
+            </article>
+
+            <article class="line--item__add">
+                <a id="addrow" v-on:click="add_a_row">Add another line item</a>
+            </article>
+        </section>
+
+        <section class="invoice--total__container">
+            <div class="invoice--line-total__subtotal">
+                Subtotal
+                <span id="sub__total">{{sub__total}}</span>
+            </div>
+            <div class="invoice--total__amount-paid">
+                Amount paid
+                <textarea v-model="amount__paid" id="amount__paid"></textarea>
+            </div>
+            <div class="invoice--line-total__balance">
+                Balance Due
+                <span id="sub__total">{{balance__due}}</span>
+            </div>
+        </section>
+
+        <footer>LeafLink
+            80 Broad Street, Suite 1808
+            New York, NY 10004
+        </footer>
+    </section>
+    <script src="bundle.js"></script>
+</body>
+</html>
