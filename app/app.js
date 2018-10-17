@@ -6,7 +6,7 @@ import Datepicker from 'vuejs-datepicker';
 
 const line_items = [{
     item: "Web Updates",
-    desc: "Monthly web updates for customyltd.com (Oct. 3 - Oct. 24, 2009)",
+    desc: "Monthly web updates for customyltd.com (Oct. 3 - Oct. 24, 2018)",
     unit_cost: 650,
     qty: 2,
 }, {
